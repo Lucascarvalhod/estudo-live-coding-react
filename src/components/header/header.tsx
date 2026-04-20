@@ -4,7 +4,12 @@ export const Header =()=>{
     return(
         <styled.HeaderContainer>
             <styled.Logo>Logo</styled.Logo>
-            <styled.CartIcon>🛒</styled.CartIcon>
+            
+            <styled.CartContainer>
+                <styled.CartIcon>🛒</styled.CartIcon>
+                <styled.CartCount>2</styled.CartCount>
+            </styled.CartContainer>
+            
         </styled.HeaderContainer>
     )
 }

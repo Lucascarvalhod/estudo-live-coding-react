@@ -16,6 +16,7 @@ transition:all 0.3s ease;
 
 &:hover{
    scale:1.05;
+}
 `;
 
 export const Image = styled.img`
@@ -24,6 +25,7 @@ height:60%;
 padding:1rem;
 border-radius:8px;
 margin-top:1.5rem;
+background-color:lightgray;
 `;
 
 export const Description = styled.span`
@@ -54,5 +56,6 @@ transition:all 0.3s ease;
 
 &:hover{
     background-color:darkblue;
-    color:white;}
+    color:white;
+}
 `;

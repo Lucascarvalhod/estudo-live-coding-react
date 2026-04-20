@@ -9,7 +9,7 @@ export const CardProduct =({product}:CardProductProps)=>{
     return(
         <style.Container> 
             
-            <style.Image src={product.Image} />
+            <style.Image src={product.image} />
             
             {/* <style.Description >
                 {product.description}
