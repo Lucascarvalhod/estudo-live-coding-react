@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import * as styled from "./style"
 
 export const Header =()=>{
@@ -6,7 +7,11 @@ export const Header =()=>{
             <styled.Logo>Logo</styled.Logo>
             
             <styled.CartContainer>
-                <styled.CartIcon>🛒</styled.CartIcon>
+                <styled.CartIcon>
+                    <Link to={"/cart"}>
+                        🛒
+                    </Link>
+                </styled.CartIcon>
                 <styled.CartCount>2</styled.CartCount>
             </styled.CartContainer>
             
