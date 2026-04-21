@@ -23,5 +23,7 @@
   },
   "include": [
     "src"
-, "src/reportWebVitals.ts"  ]
+, "src/reportWebVitals.ts", "pages"
+
+]
 }
