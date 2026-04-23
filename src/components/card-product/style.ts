@@ -28,14 +28,6 @@ margin-top:1.5rem;
 background-color:lightgray;
 `;
 
-export const Description = styled.span`
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:1.1rem;
-font-weight:600;
-`;
-
 export const Price = styled.span`
 display:flex;
 flex-wrap:wrap;

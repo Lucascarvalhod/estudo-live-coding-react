@@ -1,28 +1,30 @@
 import * as style from "./style"
-import { Product } from "../../types/get-products.types";
+import { Product } from "../../types/get-products.types"
+import { useDispatch } from "react-redux"
+import { addItem } from "../../store/features/cart-slice"
 
 interface CardProductProps {
-  product: Product;
+  product: Product
 }
 
-export const CardProduct =({product}:CardProductProps)=>{
-    return(
-        <style.Container> 
-            
-            <style.Image src={product.image} />
-            
-            {/* <style.Description >
-                {product.description}
-            </style.Description> */}
+export const CardProduct = ({ product }: CardProductProps) => {
+  const dispatch = useDispatch()
 
-            <style.Price>
-                {product.price}
-            </style.Price>
-            
-            <style.Button>
-                Adicionar ao carrinho
-            </style.Button>
-            
-        </style.Container>
-    )
+  const handleAddToCart = () => {
+    dispatch(addItem(product))
+  }
+
+  return (
+    <style.Container>
+      <style.Image src={product.image} />
+
+      <style.Price>
+        R$ {product.price.toFixed(2)}
+      </style.Price>
+
+      <style.Button onClick={handleAddToCart}>
+        Adicionar ao carrinho
+      </style.Button>
+    </style.Container>
+  )
 }
