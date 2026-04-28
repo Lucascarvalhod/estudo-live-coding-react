@@ -1,13 +1,13 @@
-import './App.css';
-import { GridProducts } from './components/grid-products/grid-products';
-import { Header } from './components/header/header';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from './pages/home/page';
+import { CartPage } from './pages/cart/page';
 
 function App() {
 return (
-    <div className="App">
-      <Header />
-      <GridProducts  />
-    </div>
+  <Routes>
+    <Route path='/' element={<Home/>}/>
+    <Route path='/cart' element={<CartPage/>} />
+  </Routes>
   );
 }
 

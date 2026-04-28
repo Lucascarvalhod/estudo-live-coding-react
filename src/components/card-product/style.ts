@@ -10,8 +10,6 @@ align-items:center;
 gap:2rem;
 border-radius:8px;
 background-color:white;
-
-
 transition:all 0.3s ease;
 
 &:hover{
@@ -26,14 +24,6 @@ padding:1rem;
 border-radius:8px;
 margin-top:1.5rem;
 background-color:lightgray;
-`;
-
-export const Description = styled.span`
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:1.1rem;
-font-weight:600;
 `;
 
 export const Price = styled.span`
@@ -57,5 +47,19 @@ transition:all 0.3s ease;
 &:hover{
     background-color:darkblue;
     color:white;
+}
+`;
+
+export const Spinner = styled.div`
+border: 4px solid lightgray;
+border-top: 4px solid blue;
+border-radius: 50%;
+width: 40px;
+height: 40px;
+animation: spin 1s linear infinite;
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 `;

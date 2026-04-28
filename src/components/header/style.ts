@@ -19,7 +19,9 @@ margin-left:2rem;
 `;
 
 export const CartIcon = styled.button`
-
+background-color:transparent;
+border:none;
+width:2rem;
 `;
 
 export const CartCount = styled.span`
