@@ -7,7 +7,7 @@ interface CardProductProps {
   product: Product
 }
 
-export const CardProduct = ({ product }: CardProductProps) => {
+export const CardProduct = ({ product}: CardProductProps) => {
   const dispatch = useDispatch()
 
   const handleAddToCart = () => {
