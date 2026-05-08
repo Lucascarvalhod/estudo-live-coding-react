@@ -1,29 +1,33 @@
 import * as styled from "./style";
+
 import { CardProduct } from "../card-product/card";
+
 import { useGetProducts } from "../../hooks/useGetProducts";
 
-export const GridProducts = ()=>{
+export const GridProducts = () => {
+  const {
+    data,
+    isLoading,
+    error,
+  } = useGetProducts();
 
-const {data, loading, error} = useGetProducts();
+  if (isLoading) {
+    return <div>Carregando...</div>;
+  }
 
-if(loading){
-    return <div>carrgando ... </div>
-}
+  if (error) {
+    return <span>Houve um erro</span>;
+  }
 
-if(error){
-   return <span>houve algum problama</span>
-}
-
-console.log(data)
-    return(
-        <styled.Container>
-          {
-            data.map((item)=>(
-                <CardProduct key={item.id} product={item}/>
-            ))
-          }
-        </styled.Container>
-    )
-}
-
+  return (
+    <styled.Container>
+      {data?.map((item) => (
+        <CardProduct
+          key={item.id}
+          product={item}
+        />
+      ))}
+    </styled.Container>
+  );
+};
   
