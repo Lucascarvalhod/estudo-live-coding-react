@@ -14,6 +14,10 @@ border-solid:1px black;
 box-shadow:2px
 `;
 
+export const ComponentsContainer = styled.div`
+with:80%;
+`;
+
 export const Logo = styled.div`
 margin-left:2rem;
 `;

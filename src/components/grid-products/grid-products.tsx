@@ -1,29 +1,21 @@
 import * as styled from "./style";
 import { CardProduct } from "../card-product/card";
-import { useGetProducts } from "../../hooks/useGetProducts";
+import { useContext } from "react";
+import { FilteredContext } from "../../providers/filtered-products-provider";
 
-export const GridProducts = ()=>{
+export const GridProducts = () => {
+    const ctx = useContext(FilteredContext);
+    if (!ctx) return null;
 
-const {data, loading, error} = useGetProducts();
+    const { filteredItems } = ctx;
 
-if(loading){
-    return <div>carrgando ... </div>
-}
-
-if(error){
-   return <span>houve algum problama</span>
-}
-
-console.log(data)
-    return(
+    return (
         <styled.Container>
-          {
-            data.map((item)=>(
-                <CardProduct key={item.id} product={item}/>
-            ))
-          }
+            {filteredItems.map((item) => (
+                <CardProduct key={item.id} product={item} />
+            ))}
         </styled.Container>
-    )
-}
+    );
+};
 
   

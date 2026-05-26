@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import * as styled from "./style"
 import { useSelector } from "react-redux"
 import { RootState } from "../../store"
+import { SearchBar } from "./components/searchbar/searchbar"
+
 
 export const Header = () => {
   const items = useSelector((state: RootState) => state.cart.items)
@@ -11,6 +13,8 @@ export const Header = () => {
   return (
     <styled.HeaderContainer>
       <styled.Logo>Logo</styled.Logo>
+
+      <SearchBar />
 
       <styled.CartContainer>
         <styled.CartIcon>
