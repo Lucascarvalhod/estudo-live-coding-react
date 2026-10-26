@@ -25,5 +25,6 @@
     "src"
 , "src/reportWebVitals.ts", "pages"
 
-]
+],
+  "types": ["node"]
 }

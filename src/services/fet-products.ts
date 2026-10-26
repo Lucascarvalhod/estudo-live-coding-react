@@ -1,11 +1,20 @@
 import { Product } from "../types/get-products.types";
 
-export async function GetProducts(signal?: AbortSignal): Promise<Product[]> {
-  const response = await fetch("https://fakestoreapi.com/products",{signal,});
+const url = "https://dummyjson.com/products";
 
-  if (!response.ok) {
+type ApiProduct = Omit<Product, "image"> & { thumbnail: string };
+type ProductsResponse = { products: ApiProduct[] };
+
+export async function GetProducts(signal?: AbortSignal): Promise<Product[]> {
+  const res = await fetch(url, { signal });
+
+  if (!res.ok) {
     throw new Error("Erro ao buscar produtos");
   }
 
-  return response.json();
+  const body: ProductsResponse = await res.json();
+  return body.products.map(({ thumbnail, ...product }) => ({
+    ...product,
+    image: thumbnail,
+  }));
 }
