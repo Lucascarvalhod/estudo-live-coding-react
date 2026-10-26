@@ -22,6 +22,7 @@ export const CardProduct = ({ product}: CardProductProps) => {
         R$ {product.price.toFixed(2)}
       </style.Price>
 
+      <style.Title>{product.title}</style.Title>
       <style.Button onClick={handleAddToCart}>
         Adicionar ao carrinho
       </style.Button>

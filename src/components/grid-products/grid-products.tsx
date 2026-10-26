@@ -1,28 +1,33 @@
 import * as styled from "./style";
 import { CardProduct } from "../card-product/card";
-import { useGetProducts } from "../../hooks/useGetProducts";
+import { useFilter } from "../../hooks/useFilter";
+import { SearchComponent } from "../filter/search-component";
 
 export const GridProducts = ()=>{
+const {filteredProducts, query, setQuery, loading, error} = useFilter();
 
-const {data, loading, error} = useGetProducts();
 
 if(loading){
-    return <div>carrgando ... </div>
+    return <div>Carregando produtos...</div>
 }
 
 if(error){
-   return <span>houve algum problama</span>
+   return <span>Não foi possível carregar os produtos: {error}</span>
 }
 
-console.log(data)
     return(
-        <styled.Container>
-          {
-            data.map((item)=>(
+        <div>
+        <SearchComponent query={query} setQuery={setQuery} />
+        {filteredProducts.length === 0 ? (
+          <p>Nenhum produto encontrado.</p>
+        ) : (
+          <styled.Container>
+            {filteredProducts.map((item)=>(
                 <CardProduct key={item.id} product={item}/>
-            ))
-          }
-        </styled.Container>
+            ))}
+          </styled.Container>
+        )}
+        </div>
     )
 }
 

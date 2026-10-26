@@ -63,3 +63,14 @@ animation: spin 1s linear infinite;
   100% { transform: rotate(360deg); }
 }
 `;
+
+export const Title = styled.h2`
+font-size:1rem;
+font-weight:500;
+text-align:center;
+margin:0.5rem 0;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+align-items:center;
+`;

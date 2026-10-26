@@ -8,5 +8,5 @@ gap:1.5rem;
 width:80%;
 justify-content:center;
 margin:0 auto;
-margin-top:4rem;
+margin-top:1rem;
 `;

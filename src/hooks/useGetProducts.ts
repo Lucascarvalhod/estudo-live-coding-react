@@ -15,22 +15,27 @@ export const useGetProducts = (): GetProductsTypes => {
     const fetchProducts = async () => {
       try {
         setLoading(true);
+        setError(null);
 
         if (productsCache) {
           setData(productsCache);
           return;
         }
 
-        const products = await GetProducts();
+        const products = await GetProducts(controller.signal);
 
         productsCache = products;
         setData(products);
-      } catch (err: any) {
-        if (err.name !== "AbortError") {
-          setError(err.message || "Erro ao buscar produtos");
+      } catch (err: unknown) {
+        if (!controller.signal.aborted) {
+          setError(
+            err instanceof Error ? err.message : "Erro ao buscar produtos"
+          );
         }
       } finally {
-        setLoading(false);
+        if (!controller.signal.aborted) {
+          setLoading(false);
+        }
       }
     };
 
