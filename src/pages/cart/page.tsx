@@ -16,7 +16,7 @@ export const CartPage = () => {
 
       {items.map(item => (
         <style.CartItems key={item.id}>
-          <img src={item.image} width={80} />
+          <img src={item.image} width={80} alt={item.title} />
 
           <h3>{item.title}</h3>
 

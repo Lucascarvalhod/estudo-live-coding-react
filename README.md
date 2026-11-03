@@ -43,13 +43,31 @@ de dados e decisões de design) está em
 src/
 ├── components/   # Componentes de UI (card, filtro, grid, header)
 ├── hooks/        # Hooks customizados (debounce, filtro, busca de produtos)
-├── pages/        # Páginas/rotas (home, cart, registrer)
+├── pages/        # Páginas/rotas (home, cart)
 ├── services/     # Integração com a API externa
 ├── store/        # Redux Toolkit (store + slices)
 └── types/        # Tipos de domínio compartilhados
 ```
 
 Detalhes completos em [DOCS/arquiteture.md](./DOCS/arquiteture.md).
+
+## Configuração de ambiente
+
+A URL da API de produtos é configurável via variável de ambiente. Copie o
+arquivo de exemplo e ajuste se necessário:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+Por padrão (`REACT_APP_API_URL=https://fakestoreapi.com`), a aplicação consome
+a Fake Store API pública.
+
+## Integração contínua
+
+O repositório possui um workflow de CI
+([`.github/workflows/ci.yml`](./.github/workflows/ci.yml)) que roda os testes
+e o build a cada push/PR na branch `main`.
 
 ## Como rodar o projeto
 
@@ -70,3 +88,8 @@ A aplicação sobe em modo de desenvolvimento em `http://localhost:3000`.
 | `yarn test`   | Executa a suíte de testes em modo interativo          |
 | `yarn build`  | Gera o build de produção em `build/`                  |
 | `yarn eject`  | Expõe a configuração interna do Create React App      |
+
+## Licença
+
+Distribuído sob a licença [MIT](./LICENSE). Sinta-se à vontade para estudar,
+copiar e adaptar o código.

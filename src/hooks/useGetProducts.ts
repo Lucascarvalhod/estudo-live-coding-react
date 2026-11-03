@@ -1,4 +1,4 @@
-import { GetProducts } from "../services/fet-products";
+import { GetProducts } from "../services/fetch-products";
 import { useState, useEffect } from "react";
 import { GetProductsTypes, Product } from "../types/get-products.types";
 

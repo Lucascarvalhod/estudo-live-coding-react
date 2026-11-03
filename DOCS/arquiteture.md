@@ -47,10 +47,9 @@ src/
 │   └── useGetProducts.ts       # Busca de produtos com cache em memória e cancelamento
 ├── pages/                    # Páginas/rotas da aplicação
 │   ├── home/                   # Página inicial (listagem de produtos)
-│   ├── cart/                   # Página do carrinho
-│   └── registrer/               # Reservada para feature futura (ainda vazia)
+│   └── cart/                   # Página do carrinho
 ├── services/                 # Integração com APIs externas
-│   └── fet-products.ts         # Chamada HTTP para a Fake Store API
+│   └── fetch-products.ts       # Chamada HTTP para a Fake Store API (URL configurável via REACT_APP_API_URL)
 ├── store/                    # Redux Toolkit
 │   ├── index.ts                # configureStore + tipos RootState/AppDispatch
 │   └── features/
@@ -168,16 +167,26 @@ Como o projeto é um laboratório de aprendizado, alguns pontos ficaram
 propositalmente (ou acidentalmente) em aberto e podem ser usados como
 exercícios futuros:
 
-- A pasta `src/pages/registrer` existe mas está vazia — reservada para uma
-  futura funcionalidade (ex.: cadastro/login de usuário).
-- O arquivo `src/services/fet-products.ts` possui um typo no nome
-  (`fet-products` → `fetch-products`).
 - Não há testes automatizados específicos da aplicação além da estrutura
-  padrão gerada pelo CRA (`setupTests.js`).
+  padrão gerada pelo CRA (`setupTests.js`). O workflow de CI já roda
+  `yarn test`, então basta adicionar os arquivos `*.test.ts(x)`.
 - O cache de produtos em `useGetProducts` é um módulo-level singleton; em uma
   aplicação maior, isso poderia evoluir para RTK Query ou React Query.
-- Não há tratamento de autenticação/usuário — adequado ao escopo atual de
-  estudo, mas relevante caso a página `registrer` seja implementada.
+- Não há tratamento de autenticação/usuário. Uma página de cadastro/login é um
+  bom próximo passo de estudo (ex.: `src/pages/register`), combinando com os
+  temas de formulários controlados e validação.
+
+## Qualidade e automação
+
+- **Licença**: o projeto é distribuído sob a licença [MIT](../LICENSE),
+  permitindo uso livre como material de estudo/referência.
+- **Integração contínua**: o workflow
+  [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) roda `yarn test`
+  e `yarn build` a cada push/PR na branch `main`, validando que o projeto
+  continua compilando e passando nos testes.
+- **Configuração por ambiente**: a URL da API de produtos é lida de
+  `REACT_APP_API_URL` (ver [`.env.example`](../.env.example)), com a
+  Fake Store API como valor padrão caso a variável não seja definida.
 
 ## Como executar
 
@@ -187,3 +196,6 @@ yarn start   # inicia o servidor de desenvolvimento (CRA)
 yarn test    # executa a suíte de testes
 yarn build   # gera o build de produção
 ```
+
+Opcionalmente, copie `.env.example` para `.env` para customizar a URL da API
+consumida pela aplicação.
