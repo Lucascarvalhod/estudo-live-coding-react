@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# react-live-code
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Laboratório pessoal de estudo de **React**, usado para praticar ferramentas do
+ecossistema, arquitetura de front-end e boas práticas de desenvolvimento
+aplicáveis inclusive a aplicações legadas.
 
-## Available Scripts
+A aplicação em si é um pequeno e-commerce (listagem de produtos com busca e
+carrinho de compras), consumindo a [Fake Store API](https://fakestoreapi.com).
+O foco do repositório, porém, não é o produto final, e sim os aprendizados
+registrados ao longo da sua construção.
 
-In the project directory, you can run:
+## Objetivos de estudo
 
-### `npm start`
+Este projeto é usado para experimentar e consolidar conhecimento em:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **[Redux Toolkit](https://redux-toolkit.js.org/)** — gerenciamento de estado
+  global (`configureStore`, `createSlice`, `useSelector`/`useDispatch`),
+  aplicado ao estado do carrinho de compras.
+- **[React Router DOM](https://reactrouter.com/)** — roteamento client-side
+  (`BrowserRouter`, `Routes`/`Route`) entre as páginas da aplicação.
+- **Arquitetura de front-end** — organização em camadas (componentes, páginas,
+  hooks, serviços, store e tipos), composição de hooks e separação de
+  responsabilidades.
+- **Boas práticas em aplicações legadas** — tipagem incremental com
+  TypeScript, isolamento de efeitos colaterais (fetch, cache, cancelamento de
+  requisições) e padrões que facilitam manutenção e evolução de código.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+A documentação detalhada da arquitetura (estrutura de pastas, camadas, fluxo
+de dados e decisões de design) está em
+[DOCS/arquiteture.md](./DOCS/arquiteture.md).
 
-### `npm test`
+## Stack
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React 19 + TypeScript
+- Redux Toolkit + React Redux
+- React Router DOM v7
+- styled-components
+- Create React App (react-scripts)
 
-### `npm run build`
+## Estrutura (resumo)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/   # Componentes de UI (card, filtro, grid, header)
+├── hooks/        # Hooks customizados (debounce, filtro, busca de produtos)
+├── pages/        # Páginas/rotas (home, cart, registrer)
+├── services/     # Integração com a API externa
+├── store/        # Redux Toolkit (store + slices)
+└── types/        # Tipos de domínio compartilhados
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Detalhes completos em [DOCS/arquiteture.md](./DOCS/arquiteture.md).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Como rodar o projeto
 
-### `npm run eject`
+Pré-requisitos: [Node.js](https://nodejs.org/) e [Yarn](https://yarnpkg.com/).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```powershell
+yarn install
+yarn start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A aplicação sobe em modo de desenvolvimento em `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Outros scripts
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Comando       | Descrição                                           |
+|---------------|------------------------------------------------------|
+| `yarn start`  | Inicia o servidor de desenvolvimento (hot-reload)     |
+| `yarn test`   | Executa a suíte de testes em modo interativo          |
+| `yarn build`  | Gera o build de produção em `build/`                  |
+| `yarn eject`  | Expõe a configuração interna do Create React App      |
