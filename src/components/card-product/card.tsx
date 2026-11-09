@@ -2,12 +2,13 @@ import * as style from "./style"
 import { Product } from "../../types/get-products.types"
 import { useDispatch } from "react-redux"
 import { addItem } from "../../store/features/cart-slice"
+import React from "react"
 
 interface CardProductProps {
   product: Product
 }
 
-export const CardProduct = ({ product}: CardProductProps) => {
+export const CardProduct = React.memo(({ product}: CardProductProps) => {
   const dispatch = useDispatch()
 
   const handleAddToCart = () => {
@@ -28,4 +29,4 @@ export const CardProduct = ({ product}: CardProductProps) => {
       </style.Button>
     </style.Container>
   )
-}
+})

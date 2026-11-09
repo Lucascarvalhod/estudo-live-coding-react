@@ -1,7 +1,5 @@
 import { Product } from "../types/get-products.types";
 
-// Permite trocar a API consumida (ex.: ambiente de testes/staging) sem
-// alterar código, com a Fake Store API como padrão.
 const API_BASE_URL = process.env.REACT_APP_API_URL ?? "https://fakestoreapi.com";
 
 export async function GetProducts(signal?: AbortSignal): Promise<Product[]> {
@@ -11,3 +9,4 @@ export async function GetProducts(signal?: AbortSignal): Promise<Product[]> {
   }
   return res.json();
 }
+
