@@ -14,12 +14,12 @@ export const useGetProducts = (): GetProductsTypes => {
 
     const fetchProducts = async () => {
       try {
-        setLoading(true);
-        setError(null);
+        setLoading(true);           //Informar que o sistema está processando a operação.
+        setError(null);             //Limpar mensagens de falhas anteriores antes de uma nova tentativa.
 
-        if (productsCache) {
-          setData(productsCache);
-          return;
+        if (productsCache) {        //Verificar se os dados já estão disponíveis no armazenamento temporário.
+          setData(productsCache);   //Reaproveitar os dados existentes para apresentar os produtos ao cliente.
+          return;                   //Encerrar o fluxo, evitando uma nova consulta desnecessária à API.
         }
 
         const products = await GetProducts(controller.signal);
